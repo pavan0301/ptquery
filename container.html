@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draggable Containers</title>
+    <link rel="stylesheet" href="stechstyle.css">
+    <style>
+        /* Add styles for better visualization */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .containerred {
+            width: 200px;
+            height: 150px;
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #DE3163;
+            position:absolute;
+        }
+        
+        .containergreen {
+            width: 200px;
+            height: 150px;
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #2AAA8A;
+            position:absolute;
+        }
+
+        .containerblue {
+            width: 200px;
+            height: 150px;
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #7393B3;
+            position:absolute;
+        }
+
+        h2 {
+            color: #fff;
+            cursor: grab;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <a href="header.html">Home</a>
+    </div>    
+
+    <div class="containerred" style="top: 50px" draggable="true" id="1" ondragstart="drag(event)">
+        <h2>Red Container</h2>
+        <p>This is the red container.</p>
+    </div>
+
+    <div class="containergreen" style="top: 250px" draggable="true" id="2" ondragstart="drag(event)">
+        <h2>Green Container</h2>
+        <p>This is the green container.</p>
+    </div>
+
+    <div class="containerblue" style="top: 450px" draggable="true" id="3" ondragstart="drag(event)">
+        <h2>Blue Container</h2>
+        <p>This is the blue container.</p>
+    </div>
+
+    <button type="button" id="ReArrange" class="btn-primary" onclick="myFunction()">ReArrange</button>
+</body>
+</html>
+<script>
+        function drag(event) {
+            event.dataTransfer.setData("text/plain", event.target.id);
+            //console.log(event.target.id);
+        }
+
+        document.addEventListener("dragover", function(event) {
+            event.preventDefault();
+        });
+
+        document.addEventListener("drop", function(event) {
+            event.preventDefault();
+            var data = event.dataTransfer.getData("text/plain");
+            
+            var draggedElement = document.getElementById(data);
+           // console.log("Before left: " + draggedElement.style.left);
+            // Adjust the position based on the drop coordinates
+            draggedElement.style.left = (event.clientX - draggedElement.clientWidth / 2) + "px";
+            draggedElement.style.top = (event.clientY - draggedElement.clientHeight / 2) + "px";
+           // console.log("AFTER left: " + draggedElement.style.left);
+        });
+</script>

@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>animated demo</title>
+  <style>
+     body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .containerred {
+            width: 200px;
+            height: 150px;
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #DE3163;
+            position:absolute;
+        }
+        
+        .containergreen {
+            width: 200px;
+            height: 150px;
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #2AAA8A;
+            position:absolute;
+        }
+
+        .containerblue {
+            width: 200px;
+            height: 150px;
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #7393B3;
+            position:absolute;
+        }
+
+        h2 {
+            color: #fff;
+            cursor: grab;
+            margin: 0;
+        }
+          div {
+            background: yellow;
+            border: 1px solid #AAA;
+            width: 80px;
+            height: 80px;
+            margin: 0 5px;
+            float: left;
+          }
+          div.colored {
+            background: red;
+          }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+</head>
+<body>
+  <div class="menu">
+    <a href="header.html">Home</a>
+  </div>    
+
+  <button id="run">Run</button>
+ 
+<div></div>
+<div id="mover"></div>
+<div></div>
+ 
+<script>
+$( "#run" ).on( "click", function() {
+  $( "div:animated" ).toggleClass( "colored" );
+});
+ 
+function animateIt() {
+  $( "#mover" ).slideToggle( "slow", animateIt );
+}
+ 
+animateIt();
+</script>
+ 
+</body>
+</html>

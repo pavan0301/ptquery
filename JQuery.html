@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQuery</title>
+    <script src="jq.min.js" type="text/javascript"></script>
+
+</head>
+<body>
+    <div id="divhello"></div>
+</body>
+</html>
+
+<script type="text/javascript">
+    $(document).ready (function() {
+        var datestring = new Date(); 
+        $("#divhello").append("<p>Hello Dude!!!</p>");
+        $("#divhello").append("<br>Date: "+ datestring.getDate() +"/"+ datestring.getMonth()+"/"+ datestring.getFullYear());
+        $("#divhello").append("<br><br>Time: "+ datestring.getHours() +":"+ datestring.getMinutes()+":"+ datestring.getSeconds());
+    });
+</script>
